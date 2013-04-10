@@ -1,0 +1,24 @@
+package org.afrosoft.timesheet.dao;
+
+import java.util.List;
+
+import org.afrosoft.timesheet.domain.Employee;
+import org.afrosoft.timesheet.domain.Role;
+
+public interface EmployeeDao {
+
+  Employee add(Employee employee);
+
+  Employee update(Employee employee);
+
+  Employee findByNationalInsuranceNo(String nationalInsuranceNo);
+
+  List<Employee> findByFirstName(String firstName);
+
+  List<Employee> findByLastName(String lastName);
+
+  List<Employee> findByRole(Role employeeRole);
+
+  void remove(Employee employee);
+
+}

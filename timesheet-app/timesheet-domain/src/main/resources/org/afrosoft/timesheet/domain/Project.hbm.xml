@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+  
+<hibernate-mapping package="org.afrosoft.timesheet.domain">
+  <class name="Project">
+    <id name="id" column="PROJECT_ID">
+      <generator class="sequence"/>
+    </id>
+    <property name="name" column="PROJECT_NAME"/>
+    <property name="startDate" column="START_DATE" type="date"/>
+    <property name="endDate" column="END_DATE" type="date"/>
+    <many-to-one name="client" column="CLIENT_ID" class="Client"/>
+    <list name="employees" table="EMP_PROJ" lazy="true">
+      <key column="PROJECT_ID"/>
+      <index column="POSITION"/>
+      <many-to-many class="Employee" column="EMPLOYEE_ID"/>
+    </list>
+    <list name="timesheetTasks">
+      <key column="PROJECT_ID"/>
+      <index column="TIMESHEET_TASK_ID"/>
+      <one-to-many class="TimesheetTask"/>
+    </list>
+  </class>
+</hibernate-mapping>

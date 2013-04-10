@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+  
+<hibernate-mapping package="org.afrosoft.timesheet.domain">
+  <class name="Timesheet">
+    <id name="id" column="TIMESHEET_ID">
+      <generator class="sequence"/>
+    </id>
+    <property name="entryDate" column="ENTRY_DATE" type="date"/>
+    <property name="hoursWorked"
+      formula="(SELECT SUM(tt.HOURS_WORKED) FROM TIMESHEET_TASK tt WHERE tt.TIMESHEET_ID = TIMESHEET_ID)"
+      type="double"/>
+    <many-to-one name="employee" column="EMPLOYEE_ID" class="Employee"/>
+    <list name="timesheetTasks" inverse="true" cascade="save-update">
+      <key column="TIMESHEET_ID"/>
+      <index column="TIMESHEET_TASK_ID"/>
+      <one-to-many class="TimesheetTask"/>
+    </list>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration 
+  PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+  "http://hibernate.sourceforge.net/hibernate-configuration-2.0.dtd">
+
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.driver_class">org.postgresql.Driver</property>
+    <property name="connection.url">jdbc:postgresql://localhost/timesheet</property>
+    <property name="connection.username">kelechi</property>
+    <property name="connection.password">owerri82</property>
+    <property name="dialect">net.sf.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="c3p0.min_size">5</property>
+    <property name="c3p0.max_size">20</property>
+    <property name="c3p0.timeout">300</property>
+    <property name="c3p0.max_statements">50</property>
+    <property name="c3p0.idle_test_period">3000</property>
+    <property name="hbm2ddl.auto">validate</property>
+    <property name="show_sql">true</property>
+    <mapping resource="org/afrosoft/timesheet/domain/Client.hbm.xml"/>
+    <mapping resource="org/afrosoft/timesheet/domain/Employee.hbm.xml"/>
+    <mapping resource="org/afrosoft/timesheet/domain/Project.hbm.xml"/>
+    <mapping resource="org/afrosoft/timesheet/domain/Timesheet.hbm.xml"/>
+    <mapping resource="org/afrosoft/timesheet/domain/TimesheetTask.hbm.xml"/>
+  </session-factory>
+</hibernate-configuration>

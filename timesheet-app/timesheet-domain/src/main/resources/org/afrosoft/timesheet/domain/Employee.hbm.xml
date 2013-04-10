@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+  
+<hibernate-mapping package="org.afrosoft.timesheet.domain">
+  <class name="Employee">
+    <id name="id" column="EMPLOYEE_ID">
+      <generator class="sequence"/>
+    </id>
+    <property name="nationalInsuranceNo" column="NATIONAL_INSURANCE_NO"/>
+    <property name="firstName" column="FIRST_NAME"/>
+    <property name="lastName" column="LAST_NAME"/>
+    <property name="dateOfBirth" column="DOB" type="date"/>
+    <property name="role" column="ROLE"/>
+    <property name="rate" column="HOURLY_RATE" type="big_decimal"/>
+    <component name="address" class="Address">
+      <property name="line1" column="ADDRESS_LINE_1"/>
+      <property name="line2" column="ADDRESS_LINE_2"/>
+      <property name="line3" column="ADDRESS_LINE_3"/>
+      <property name="line4" column="ADDRESS_LINE_4"/>
+      <property name="postcode" column="ADDRESS_POSTCODE"/>
+    </component>
+    <list name="projects" table="EMP_PROJ" lazy="true" inverse="true">
+      <key column="EMPLOYEE_ID"/>
+      <index column="POSITION"/>
+      <many-to-many class="Project" column="PROJECT_ID"/>
+    </list>
+    <list name="timesheets" lazy="true" inverse="true" cascade="save-update">
+      <key column="EMPLOYEE_ID"/>
+      <index column="TIMESHEET_ID"/>
+      <one-to-many class="Timesheet"/>
+    </list>
+  </class>
+</hibernate-mapping>
