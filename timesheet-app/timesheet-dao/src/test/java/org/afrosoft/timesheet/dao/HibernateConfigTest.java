@@ -26,7 +26,7 @@ public class HibernateConfigTest {
       Employee worker = TestUtils.employee();
       
       Manager manager = new Manager();
-      manager.setNationalInsuranceNo("SC124588F");
+      manager.setEmployeeNo("SC124588F");
       manager.setFirstName("Gosia");
       manager.setLastName("Antoinette");
       manager.setDateOfBirth(new DateMidnight(1969, 8, 23).toDate());

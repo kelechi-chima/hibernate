@@ -77,6 +77,18 @@ public class Project {
   }
 
   @Override
+  public int hashCode() {
+  	// TODO
+	  return super.hashCode();
+  }
+
+	@Override
+  public boolean equals(Object obj) {
+		// TODO
+	  return super.equals(obj);
+  }
+
+	@Override
   public String toString() {
 	  return new StringBuilder().
 	  		append("Project[id=").append(id).

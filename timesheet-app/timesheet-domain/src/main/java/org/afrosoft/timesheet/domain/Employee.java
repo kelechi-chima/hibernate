@@ -9,7 +9,7 @@ public class Employee {
 
   private Long id;
 
-  private String nationalInsuranceNo;
+  private String employeeNo;
 
   private String firstName;
 
@@ -37,15 +37,15 @@ public class Employee {
     this.id = id;
   }
 
-  public String getNationalInsuranceNo() {
-    return nationalInsuranceNo;
-  }
+  public String getEmployeeNo() {
+		return employeeNo;
+	}
 
-  public void setNationalInsuranceNo(String nationalInsuranceNo) {
-    this.nationalInsuranceNo = nationalInsuranceNo;
-  }
+	public void setEmployeeNo(String employeeNo) {
+		this.employeeNo = employeeNo;
+	}
 
-  public String getFirstName() {
+	public String getFirstName() {
     return firstName;
   }
 
@@ -120,65 +120,20 @@ public class Employee {
   @Override
   public int hashCode() {
     int result = 17;
-    result = 37 * result + (id != null ? id.hashCode() : 0);
-    result = 37 * result + (firstName != null ? firstName.hashCode() : 0);
-    result = 37 * result + (lastName != null ? lastName.hashCode() : 0);
-    result = 37 * result + (nationalInsuranceNo != null ? nationalInsuranceNo.hashCode() : 0);
-    result = 37 * result + (dateOfBirth != null ? dateOfBirth.hashCode() : 0);
-    result = 37 * result + (role != null ? role.hashCode() : 0);
-    result = 37 * result + (address != null ? address.hashCode() : 0);
-    result = 37 * result + (manager != null ? manager.hashCode() : 0);
-    result = 37 * result + (timesheets != null ? timesheets.hashCode() : 0);
-    result = 37 * result + (projects != null ? projects.hashCode() : 0);
+    result = 37 * result + (getEmployeeNo() != null ? getEmployeeNo().hashCode() : 0);
     return result;
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Employee))
-      return false;
+  	if (this == obj) return true;
+    if (!(obj instanceof Employee)) return false;
 
     Employee other = (Employee)obj;
 
-    if (this.id == null && other.id != null ||
-        this.id != null && (other.id == null || !this.id.equals(other.id)))
-      return false;
-
-    if (this.firstName == null && other.firstName != null ||
-        this.firstName != null && (other.firstName == null || !this.firstName.equals(other.firstName)))
-      return false;
-
-    if (this.lastName == null && other.lastName != null ||
-        this.lastName != null && (other.lastName == null || !this.lastName.equals(other.lastName)))
-      return false;
-
-    if (this.role == null && other.role != null ||
-        this.role != null && (other.role == null || !this.role.equals(other.role)))
-      return false;
-    
-    if (this.dateOfBirth == null && other.dateOfBirth != null ||
-        this.dateOfBirth != null && (other.dateOfBirth == null || !this.dateOfBirth.equals(other.dateOfBirth)))
-      return false;
-    
-    if (this.nationalInsuranceNo == null && other.nationalInsuranceNo != null ||
-        this.nationalInsuranceNo != null && (other.nationalInsuranceNo == null || !this.nationalInsuranceNo.equals(other.nationalInsuranceNo)))
-      return false;
-    
-    if (this.manager == null && other.manager != null || 
-        this.manager != null && (other.manager == null || !this.manager.equals(other.manager)))
-      return false;
-    
-    if (this.address == null && other.address != null ||
-        this.address != null && (other.address == null || !this.address.equals(other.address)))
-      return false;
-
-    if (this.projects == null && other.projects != null ||
-        this.projects != null && (other.projects == null || !this.projects.equals(other.projects)))
-      return false;
-    
-    if (this.timesheets == null && other.timesheets != null ||
-        this.timesheets != null && (other.timesheets == null || !this.timesheets.equals(other.timesheets)))
-      return false;
+    if (this.getEmployeeNo() == null && other.getEmployeeNo() != null) return false;
+    if (this.getEmployeeNo() != null)
+    	if (other.getEmployeeNo() == null || !this.getEmployeeNo().equals(other.getEmployeeNo())) return false;
 
     return true;
   }
@@ -186,12 +141,13 @@ public class Employee {
   @Override
   public String toString() {
     return new StringBuilder().
-        append("Employee[id=").append(id).
-        append(", first name=").append(firstName).
-        append(", last name=").append(lastName).
-        append(", dob=").append(dateOfBirth).
-        append(", role=").append(role).
-        append(", rate=").append(rate).
+        append("Employee[id=").append(getId()).
+        append(", employee no=").append(getEmployeeNo()).
+        append(", first name=").append(getFirstName()).
+        append(", last name=").append(getLastName()).
+        append(", dob=").append(getDateOfBirth()).
+        append(", role=").append(getRole()).
+        append(", rate=").append(getRate()).
         append("]").toString();
   }
 

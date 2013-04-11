@@ -8,34 +8,17 @@ import org.junit.Test;
 public class EmployeeTest {
 
   @Test
-  public void twoInstancesWithSameFieldValuesShouldBeEqual() {
+  public void differentInstancesWithSameEmployeeNoAreEqual() {
     Employee a = TestUtils.employee();
-    a.setId(1L);
-    
     Employee b = copyFields(a);
-    
     assertEquals(a, b);
   }
   
   @Test
-  public void twoInstancesWithDifferentIdShouldNotBeEqual() {
+  public void differentInstancesWithDifferentEmployeeNoAreNotEqual() {
     Employee a = TestUtils.employee();
-    a.setId(1L);
-    
     Employee b = copyFields(a);
-    b.setId(2L);
-    
-    assertNotEquals(a, b);
-  }
-  
-  @Test
-  public void twoInstancesWithDifferentNationalInsuranceNosShouldNotBeEqual() {
-    Employee a = TestUtils.employee();
-    a.setId(1L);
-    
-    Employee b = copyFields(a);
-    b.setNationalInsuranceNo("Different No");
-    
+    b.setEmployeeNo("Different employee no");
     assertNotEquals(a, b);
   }
 
@@ -49,7 +32,7 @@ public class EmployeeTest {
     b.setRole(a.getRole());
     b.setAddress(a.getAddress());
     b.setManager(a.getManager());
-    b.setNationalInsuranceNo(a.getNationalInsuranceNo());
+    b.setEmployeeNo(a.getEmployeeNo());
     b.setProjects(a.getProjects());
     b.setTimesheets(a.getTimesheets());
     return b;

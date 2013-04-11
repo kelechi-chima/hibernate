@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS client;
 CREATE TABLE client
 (
   client_id bigint NOT NULL,
-  client_name character varying(255),
+  client_name character varying(255) UNIQUE,
   address_line_1 character varying(255),
   address_line_2 character varying(255),
   address_line_3 character varying(255),
@@ -24,7 +24,7 @@ CREATE TABLE client
 CREATE TABLE employee
 (
   employee_id bigint NOT NULL,
-  national_insurance_no character varying(255) UNIQUE,
+  employee_no character varying(255) UNIQUE,
   dob date,
   first_name character varying(255),
   last_name character varying(255),

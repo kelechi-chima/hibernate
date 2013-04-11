@@ -60,7 +60,7 @@ public final class TestUtils {
    */
   public static Employee employee() {
     Employee employee = new Employee();
-    employee.setNationalInsuranceNo("AX497822E");
+    employee.setEmployeeNo("AX497822E");
     employee.setFirstName("Jane");
     employee.setLastName("Smith");
     employee.setDateOfBirth(new DateMidnight(1975, 5, 15).toDate());

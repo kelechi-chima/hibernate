@@ -7,34 +7,17 @@ import org.junit.Test;
 public class ClientTest {
 
   @Test
-  public void twoInstancesWithSameFieldValuesShouldBeEqual() {
+  public void differentInstancesWithSameNameAreEqual() {
     Client a = TestUtils.client();
-    a.setId(7L);
-    
     Client b = copyFields(a);
-    
     assertEquals(a, b);
   }
   
   @Test
-  public void twoInstancesWithDifferentIdShouldNotBeEqual() {
+  public void differentInstancesWithDifferentNamesAreNotEqual() {
     Client a = TestUtils.client();
-    a.setId(7L);
-    
     Client b = copyFields(a);
-    b.setId(8L);
-    
-    assertNotEquals(a, b);
-  }
-  
-  @Test
-  public void twoInstancesWithDifferentNamesShouldNotBeEqual() {
-    Client a = TestUtils.client();
-    a.setId(7L);
-    
-    Client b = copyFields(a);
-    b.setName("Different Client");
-    
+    b.setName("Different Name");
     assertNotEquals(a, b);
   }
   

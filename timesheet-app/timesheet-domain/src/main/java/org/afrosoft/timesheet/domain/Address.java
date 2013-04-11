@@ -52,40 +52,40 @@ public class Address {
 	@Override
   public int hashCode() {
 	  int result = 17;
-	  result = 37 * result + (line1 != null ? line1.hashCode() : 0);
-	  result = 37 * result + (line2 != null ? line2.hashCode() : 0);
-	  result = 37 * result + (line3 != null ? line3.hashCode() : 0);
-	  result = 37 * result + (line4 != null ? line4.hashCode() : 0);
-	  result = 37 * result + (postcode != null ? postcode.hashCode() : 0);
+	  result = 37 * result + (getLine1() != null ? getLine1().hashCode() : 0);
+	  result = 37 * result + (getLine2() != null ? getLine2().hashCode() : 0);
+	  result = 37 * result + (getLine3() != null ? getLine3().hashCode() : 0);
+	  result = 37 * result + (getLine3() != null ? getLine4().hashCode() : 0);
+	  result = 37 * result + (getPostcode() != null ? getPostcode().hashCode() : 0);
     return result;
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (!(obj instanceof Address))
-      return false;
+  	if (this == obj) return true;
+    if (!(obj instanceof Address)) return false;
     
     Address other = (Address)obj;
     
-    if (this.line1 == null && other.line1 != null ||
-        this.line1 != null && (other.line1 == null || !this.line1.equals(other.line1)))
-      return false;
+    if (this.getLine1() == null && other.getLine1() != null) return false;
+    if (this.getLine1() != null)
+    	if (other.getLine1() == null || !this.getLine1().equals(other.getLine1())) return false;
     
-    if (this.line2 == null && other.line2 != null ||
-        this.line2 != null && (other.line2 == null || !this.line2.equals(other.line2)))
-      return false;
+    if (this.getLine2() == null && other.getLine2() != null) return false;
+    if (this.getLine2() != null)
+    	if (other.getLine2() == null || !this.getLine2().equals(other.getLine2())) return false;
     
-    if (this.line3 == null && other.line3 != null ||
-        this.line3 != null && (other.line3 == null || !this.line3.equals(other.line3)))
-      return false;
+    if (this.getLine3() == null && other.getLine3() != null) return false;
+    if (this.getLine3() != null)
+    	if (other.getLine3() == null || !this.getLine3().equals(other.getLine3())) return false;
     
-    if (this.line4 == null && other.line4 != null ||
-        this.line4 != null && (other.line4 == null || !this.line4.equals(other.line4)))
-      return false;
+    if (this.getLine4() == null && other.getLine4() != null) return false;
+    if (this.getLine4() != null)
+    	if (other.getLine4() == null || !this.getLine4().equals(other.getLine4())) return false;
     
-    if (this.postcode == null && other.postcode != null ||
-        this.postcode != null && (other.postcode == null || !this.postcode.equals(other.postcode)))
-      return false;
+    if (this.getPostcode() == null && other.getPostcode() != null) return false;
+    if (this.getPostcode() != null)
+    	if (other.getPostcode() == null || !this.getPostcode().equals(other.getPostcode())) return false;
     
     return true;
   }
@@ -93,11 +93,11 @@ public class Address {
   @Override
   public String toString() {
     return new StringBuilder().
-	  		append("Address[line1=").append(line1).
-	  		append(", line2=").append(line2).
-	  		append(", line3=").append(line3).
-	  		append(", line4=").append(line4).
-	  		append(", postcode=").append(postcode).
+	  		append("Address[line1=").append(getLine1()).
+	  		append(", line2=").append(getLine2()).
+	  		append(", line3=").append(getLine3()).
+	  		append(", line4=").append(getLine4()).
+	  		append(", postcode=").append(getPostcode()).
 	  		append("]").toString();
   }
 	
