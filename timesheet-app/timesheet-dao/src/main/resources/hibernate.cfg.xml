@@ -19,6 +19,7 @@
     <property name="show_sql">true</property>
     <mapping resource="org/afrosoft/timesheet/domain/Client.hbm.xml"/>
     <mapping resource="org/afrosoft/timesheet/domain/Employee.hbm.xml"/>
+    <mapping resource="org/afrosoft/timesheet/domain/Manager.hbm.xml"/>
     <mapping resource="org/afrosoft/timesheet/domain/Project.hbm.xml"/>
     <mapping resource="org/afrosoft/timesheet/domain/Timesheet.hbm.xml"/>
     <mapping resource="org/afrosoft/timesheet/domain/TimesheetTask.hbm.xml"/>

@@ -8,6 +8,8 @@
 
   <logger name="net.sf.hibernate" level="DEBUG"/>
   
+  <!-- <logger name="net.sf.hibernate.type" level="TRACE"/> -->
+  
   <logger name="net.sf.hibernate.cfg" level="WARN"/>
   
   <logger name="net.sf.hibernate.util" level="WARN"/>

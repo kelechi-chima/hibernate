@@ -12,15 +12,13 @@
     <property name="startDate" column="START_DATE" type="date"/>
     <property name="endDate" column="END_DATE" type="date"/>
     <many-to-one name="client" column="CLIENT_ID" class="Client"/>
-    <list name="employees" table="EMP_PROJ" lazy="true">
+    <set name="employees" table="EMP_PROJ" lazy="true">
       <key column="PROJECT_ID"/>
-      <index column="POSITION"/>
       <many-to-many class="Employee" column="EMPLOYEE_ID"/>
-    </list>
-    <list name="timesheetTasks">
+    </set>
+    <set name="timesheetTasks">
       <key column="PROJECT_ID"/>
-      <index column="TIMESHEET_TASK_ID"/>
       <one-to-many class="TimesheetTask"/>
-    </list>
+    </set>
   </class>
 </hibernate-mapping>

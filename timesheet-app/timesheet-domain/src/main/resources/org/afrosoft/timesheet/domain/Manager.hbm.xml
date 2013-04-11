@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+  
+<hibernate-mapping package="org.afrosoft.timesheet.domain">
+  <subclass name="Manager" extends="Employee" discriminator-value="1">
+    <set name="subordinates" inverse="true" cascade="save-update">
+      <key column="MANAGER_ID"/>
+      <one-to-many class="Employee"/>
+    </set>
+  </subclass>
+</hibernate-mapping>

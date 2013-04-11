@@ -13,10 +13,9 @@
       formula="(SELECT SUM(tt.HOURS_WORKED) FROM TIMESHEET_TASK tt WHERE tt.TIMESHEET_ID = TIMESHEET_ID)"
       type="double"/>
     <many-to-one name="employee" column="EMPLOYEE_ID" class="Employee"/>
-    <list name="timesheetTasks" inverse="true" cascade="save-update">
+    <set name="timesheetTasks" inverse="true" cascade="save-update">
       <key column="TIMESHEET_ID"/>
-      <index column="TIMESHEET_TASK_ID"/>
       <one-to-many class="TimesheetTask"/>
-    </list>
+    </set>
   </class>
 </hibernate-mapping>

@@ -67,29 +67,24 @@ public class Address {
     
     Address other = (Address)obj;
     
-    if (this.line1 == null && other.line1 != null)
-      return false;
-    else if (!this.line1.equals(other.line1))
-      return false;
-    
-    if (this.line2 == null && other.line2 != null)
-      return false;
-    else if (!this.line2.equals(other.line2))
+    if (this.line1 == null && other.line1 != null ||
+        this.line1 != null && (other.line1 == null || !this.line1.equals(other.line1)))
       return false;
     
-    if (this.line3 == null && other.line3 != null)
-      return false;
-    else if (!this.line3.equals(other.line3))
-      return false;
-    
-    if (this.line4 == null && other.line4 != null)
-      return false;
-    else if (!this.line4.equals(other.line4))
+    if (this.line2 == null && other.line2 != null ||
+        this.line2 != null && (other.line2 == null || !this.line2.equals(other.line2)))
       return false;
     
-    if (this.postcode == null && other.postcode != null)
+    if (this.line3 == null && other.line3 != null ||
+        this.line3 != null && (other.line3 == null || !this.line3.equals(other.line3)))
       return false;
-    else if (!this.postcode.equals(other.postcode))
+    
+    if (this.line4 == null && other.line4 != null ||
+        this.line4 != null && (other.line4 == null || !this.line4.equals(other.line4)))
+      return false;
+    
+    if (this.postcode == null && other.postcode != null ||
+        this.postcode != null && (other.postcode == null || !this.postcode.equals(other.postcode)))
       return false;
     
     return true;

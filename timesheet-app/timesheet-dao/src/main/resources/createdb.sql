@@ -35,6 +35,8 @@ CREATE TABLE employee
   address_line_4 character varying(255),
   address_postcode character varying(255),
   hourly_rate numeric(19,2),
+  manages boolean default false,
+  manager_id bigint,
   CONSTRAINT employee_pkey PRIMARY KEY (employee_id)
 );
 

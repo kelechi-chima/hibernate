@@ -1,8 +1,8 @@
 package org.afrosoft.timesheet.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Project {
 
@@ -16,9 +16,9 @@ public class Project {
 
 	private Client client;
 	
-	private List<Employee> employees = new ArrayList<Employee>();
+	private Set<Employee> employees = new HashSet<Employee>();
 	
-	private List<TimesheetTask> timesheetTasks = new ArrayList<TimesheetTask>();
+	private Set<TimesheetTask> timesheetTasks = new HashSet<TimesheetTask>();
 
 	public Long getId() {
 		return id;
@@ -60,19 +60,19 @@ public class Project {
 		this.client = client;
 	}
 
-	public List<Employee> getEmployees() {
+	public Set<Employee> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(List<Employee> employees) {
+	public void setEmployees(Set<Employee> employees) {
 		this.employees = employees;
 	}
 
-	public List<TimesheetTask> getTimesheetTasks() {
+	public Set<TimesheetTask> getTimesheetTasks() {
     return timesheetTasks;
   }
 
-  public void setTimesheetTasks(List<TimesheetTask> timesheetTasks) {
+  public void setTimesheetTasks(Set<TimesheetTask> timesheetTasks) {
     this.timesheetTasks = timesheetTasks;
   }
 

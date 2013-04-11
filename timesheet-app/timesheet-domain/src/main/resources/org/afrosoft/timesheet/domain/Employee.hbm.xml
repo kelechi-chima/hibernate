@@ -4,10 +4,11 @@
   "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
   
 <hibernate-mapping package="org.afrosoft.timesheet.domain">
-  <class name="Employee">
+  <class name="Employee" discriminator-value="0">
     <id name="id" column="EMPLOYEE_ID">
       <generator class="sequence"/>
     </id>
+    <discriminator column="MANAGES" type="character" length="1"/>
     <property name="nationalInsuranceNo" column="NATIONAL_INSURANCE_NO"/>
     <property name="firstName" column="FIRST_NAME"/>
     <property name="lastName" column="LAST_NAME"/>
@@ -21,15 +22,14 @@
       <property name="line4" column="ADDRESS_LINE_4"/>
       <property name="postcode" column="ADDRESS_POSTCODE"/>
     </component>
-    <list name="projects" table="EMP_PROJ" lazy="true" inverse="true">
+    <set name="projects" table="EMP_PROJ" lazy="true" inverse="true">
       <key column="EMPLOYEE_ID"/>
-      <index column="POSITION"/>
       <many-to-many class="Project" column="PROJECT_ID"/>
-    </list>
-    <list name="timesheets" lazy="true" inverse="true" cascade="save-update">
+    </set>
+    <set name="timesheets" lazy="true" inverse="true" cascade="save-update">
       <key column="EMPLOYEE_ID"/>
-      <index column="TIMESHEET_ID"/>
       <one-to-many class="Timesheet"/>
-    </list>
+    </set>
+    <many-to-one name="manager" column="MANAGER_ID" class="Manager"/>
   </class>
 </hibernate-mapping>

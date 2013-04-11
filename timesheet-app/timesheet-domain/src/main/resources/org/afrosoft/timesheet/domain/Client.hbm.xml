@@ -22,10 +22,14 @@
       <property name="line4" column="ADDRESS_LINE_4"/>
       <property name="postcode" column="ADDRESS_POSTCODE"/>
     </component>
-    <list name="projects" lazy="true" inverse="true" cascade="save-update">
+    <!-- <list name="projects" lazy="true" inverse="true" cascade="save-update">
       <key column="CLIENT_ID"/>
       <index column="PROJECT_ID"/>
       <one-to-many class="Project"/>
-    </list>
+    </list> -->
+    <set name="projects" lazy="true" inverse="true" cascade="save-update">
+      <key column="CLIENT_ID"/>
+      <one-to-many class="Project"/>
+    </set>
   </class>
 </hibernate-mapping>

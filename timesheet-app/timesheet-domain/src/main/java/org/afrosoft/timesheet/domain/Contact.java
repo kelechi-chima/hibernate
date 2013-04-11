@@ -52,24 +52,20 @@ public class Contact {
     
     Contact other = (Contact)obj;
     
-    if (this.firstName == null && other.firstName != null)
-      return false;
-    else if (!this.firstName.equals(other.firstName))
+    if (this.firstName == null && other.firstName != null ||
+        this.firstName != null && (other.firstName == null || !this.firstName.equals(other.firstName)))
       return false;
     
-    if (this.lastName == null && other.lastName != null)
-      return false;
-    else if (!this.lastName.equals(other.lastName))
+    if (this.lastName == null && other.lastName != null ||
+        this.lastName != null && (other.lastName == null || !this.lastName.equals(other.lastName)))
       return false;    
     
-    if (this.email == null && other.email != null)
-      return false;
-    else if (!this.email.equals(other.email))
+    if (this.email == null && other.email != null ||
+        this.email != null && (other.email == null || !this.email.equals(other.email)))
       return false;
 
-    if (this.telephone == null && other.telephone != null)
-      return false;
-    else if (!this.telephone.equals(other.telephone))
+    if (this.telephone == null && other.telephone != null ||
+        this.telephone != null && (other.telephone == null || !this.telephone.equals(other.telephone)))
       return false;
     
     return true;
