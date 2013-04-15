@@ -78,23 +78,32 @@ public class Project {
 
   @Override
   public int hashCode() {
-  	// TODO
-	  return super.hashCode();
+    int result = 17;
+    result = 37 * result + (name != null ? name.hashCode() : 0);
+	  return result;
   }
 
 	@Override
   public boolean equals(Object obj) {
-		// TODO
-	  return super.equals(obj);
+	  if (this == obj) return true;
+	  if (!(obj instanceof Project)) return false;
+	  
+	  Project other = (Project)obj;
+	  
+	  if (getName() == null && other.getName() != null) return false;
+	  if (getName() != null)
+	    if (other.getName() == null || !getName().equals(other.getName())) return false;
+	  
+	  return true;
   }
 
 	@Override
   public String toString() {
 	  return new StringBuilder().
-	  		append("Project[id=").append(id).
-	  		append(", name=").append(name).
-	  		append(", start date=").append(startDate).
-	  		append(", end date=").append(endDate).
+	  		append("Project[id=").append(getId()).
+	  		append(", name=").append(getName()).
+	  		append(", start date=").append(getStartDate()).
+	  		append(", end date=").append(getEndDate()).
 	  		append("]").toString();
   }
 	

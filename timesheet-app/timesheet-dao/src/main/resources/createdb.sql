@@ -28,16 +28,16 @@ CREATE TABLE employee
   dob date,
   first_name character varying(255),
   last_name character varying(255),
-  role character varying(255),
+  employee_role character varying(255),
   address_line_1 character varying(255),
   address_line_2 character varying(255),
   address_line_3 character varying(255),
   address_line_4 character varying(255),
   address_postcode character varying(255),
   hourly_rate numeric(19,2),
-  manages boolean default false,
   manager_id bigint,
-  CONSTRAINT employee_pkey PRIMARY KEY (employee_id)
+  CONSTRAINT employee_pkey PRIMARY KEY (employee_id),
+  CHECK (employee_role IN ('ANALYST', 'DEVELOPER', 'DESIGNER', 'PROJECT_MANAGER', 'TESTER'))
 );
 
 CREATE TABLE project
@@ -81,7 +81,8 @@ CREATE TABLE timesheet
 CREATE TABLE timesheet_task
 (
   timesheet_task_id bigint NOT NULL,
-  description character varying(255),
+  task_name character varying(255),
+  task_desc character varying(255),
   hours_worked double precision,
   timesheet_id bigint,
   project_id bigint,

@@ -21,12 +21,12 @@
     
     <!-- Hibernate dependencies -->
     <dependency>
-      <groupId>net.sf.hibernate</groupId>
-      <artifactId>hibernate</artifactId>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
     </dependency>
     <dependency>
-      <groupId>net.sf.ehcache</groupId>
-      <artifactId>ehcache</artifactId>
+      <groupId>javassist</groupId>
+      <artifactId>javassist</artifactId>
     </dependency>
     <dependency>
       <groupId>postgresql</groupId>

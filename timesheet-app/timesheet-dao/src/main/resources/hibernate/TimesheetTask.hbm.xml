@@ -1,13 +1,14 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC 
-  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
-  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
   
 <hibernate-mapping package="org.afrosoft.timesheet.domain">
   <class name="TimesheetTask" table="TIMESHEET_TASK">
     <id name="id" column="TIMESHEET_TASK_ID">
       <generator class="sequence"/>
     </id>
+    <property name="taskName" column="TASK_NAME"/>
     <property name="description" column="TASK_DESC"/>
     <property name="hoursWorked" column="HOURS_WORKED" type="double"/>
     <many-to-one name="project" column="PROJECT_ID" class="Project"/>

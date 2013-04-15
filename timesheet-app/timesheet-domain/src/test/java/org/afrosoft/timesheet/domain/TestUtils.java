@@ -100,4 +100,57 @@ public final class TestUtils {
     task.setHoursWorked(5.00);
     return task;
   }
+  
+  public static Client copyFields(Client a) {
+    Client b = new Client();
+    b.setId(a.getId());
+    b.setName(a.getName());
+    b.setAddress(a.getAddress());
+    b.setContact(a.getContact());
+    b.setProjects(a.getProjects());
+    return b;
+  }
+  
+  public static Employee copyFields(Employee a) {
+    Employee b = new Employee();
+    b.setId(a.getId());
+    b.setFirstName(a.getFirstName());
+    b.setLastName(a.getLastName());
+    b.setDateOfBirth(a.getDateOfBirth());
+    b.setRate(a.getRate());
+    b.setRole(a.getRole());
+    b.setAddress(a.getAddress());
+    b.setManager(a.getManager());
+    b.setEmployeeNo(a.getEmployeeNo());
+    b.setProjects(a.getProjects());
+    b.setTimesheets(a.getTimesheets());
+    return b;
+  }
+  
+  public static Timesheet copyFields(Timesheet a) {
+    Timesheet b = new Timesheet();
+    b.setEmployee(copyFields(a.getEmployee()));
+    b.setEntryDate(a.getEntryDate());
+    return b;
+  }
+  
+  public static Address copyFields(Address a) {
+    Address b = new Address();
+    b.setLine1(a.getLine1());
+    b.setLine2(a.getLine2());
+    b.setLine3(a.getLine3());
+    b.setLine4(a.getLine4());
+    b.setPostcode(a.getPostcode());
+    return b;
+  }
+  
+  public static Contact copyFields(Contact a) {
+    Contact b = new Contact();
+    b.setFirstName(a.getFirstName());
+    b.setLastName(a.getLastName());
+    b.setEmail(a.getEmail());
+    b.setTelephone(a.getTelephone());
+    return b;
+  }
+  
 }

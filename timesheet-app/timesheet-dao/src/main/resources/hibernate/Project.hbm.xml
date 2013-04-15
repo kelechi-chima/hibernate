@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC 
-  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
-  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
   
 <hibernate-mapping package="org.afrosoft.timesheet.domain">
   <class name="Project">
@@ -16,7 +16,7 @@
       <key column="PROJECT_ID"/>
       <many-to-many class="Employee" column="EMPLOYEE_ID"/>
     </set>
-    <set name="timesheetTasks">
+    <set name="timesheetTasks" lazy="true">
       <key column="PROJECT_ID"/>
       <one-to-many class="TimesheetTask"/>
     </set>

@@ -1,19 +1,18 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC 
-  "-//Hibernate/Hibernate Mapping DTD 2.0//EN"
-  "http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
   
 <hibernate-mapping package="org.afrosoft.timesheet.domain">
-  <class name="Employee" discriminator-value="0">
+  <class name="Employee">
     <id name="id" column="EMPLOYEE_ID">
       <generator class="sequence"/>
     </id>
-    <discriminator column="MANAGES" type="character" length="1"/>
-    <property name="nationalInsuranceNo" column="NATIONAL_INSURANCE_NO"/>
+    <property name="employeeNo" column="EMPLOYEE_NO" unique="true"/>
     <property name="firstName" column="FIRST_NAME"/>
     <property name="lastName" column="LAST_NAME"/>
     <property name="dateOfBirth" column="DOB" type="date"/>
-    <property name="role" column="ROLE"/>
+    <property name="role" type="org.afrosoft.timesheet.dao.hibernate.RoleEnumUserType" column="EMPLOYEE_ROLE"/>
     <property name="rate" column="HOURLY_RATE" type="big_decimal"/>
     <component name="address" class="Address">
       <property name="line1" column="ADDRESS_LINE_1"/>
@@ -30,6 +29,10 @@
       <key column="EMPLOYEE_ID"/>
       <one-to-many class="Timesheet"/>
     </set>
-    <many-to-one name="manager" column="MANAGER_ID" class="Manager"/>
+    <many-to-one name="manager" column="MANAGER_ID" class="Employee"/>
+    <set name="subordinates" table="EMPLOYEE" cascade="save-update" inverse="true">
+      <key column="MANAGER_ID"/>
+      <one-to-many class="Employee"/>
+    </set>
   </class>
 </hibernate-mapping>

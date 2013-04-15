@@ -23,7 +23,9 @@ public class Employee {
 
   private Address address;
 
-  private Manager manager;
+  private Employee manager;
+  
+  private Set<Employee> subordinates = new HashSet<Employee>();
 
   private Set<Project> projects = new HashSet<Project>();
 
@@ -93,12 +95,20 @@ public class Employee {
     this.address = address;
   }
 
-  public Manager getManager() {
+  public Employee getManager() {
     return manager;
   }
 
-  public void setManager(Manager manager) {
+  public void setManager(Employee manager) {
     this.manager = manager;
+  }
+
+  public Set<Employee> getSubordinates() {
+    return subordinates;
+  }
+
+  public void setSubordinates(Set<Employee> subordinates) {
+    this.subordinates = subordinates;
   }
 
   public Set<Project> getProjects() {
