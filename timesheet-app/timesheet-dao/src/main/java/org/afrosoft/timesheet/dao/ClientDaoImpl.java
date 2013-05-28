@@ -6,7 +6,9 @@ import org.afrosoft.timesheet.domain.Client;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ClientDaoImpl implements ClientDao {
 
   private final Logger logger = LoggerFactory.getLogger(ClientDaoImpl.class);

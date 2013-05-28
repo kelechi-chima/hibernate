@@ -1,6 +1,7 @@
 package org.afrosoft.timesheet.domain;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +9,8 @@ import java.util.Set;
 public class Employee {
 
   private Long id;
+  
+  private Timestamp lastUpdatedTime;
 
   private String employeeNo;
 
@@ -37,6 +40,14 @@ public class Employee {
 
   protected void setId(Long id) {
     this.id = id;
+  }
+
+  Timestamp getLastUpdatedTime() {
+    return lastUpdatedTime;
+  }
+
+  void setLastUpdatedTime(Timestamp lastUpdatedTime) {
+    this.lastUpdatedTime = lastUpdatedTime;
   }
 
   public String getEmployeeNo() {

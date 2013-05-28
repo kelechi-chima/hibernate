@@ -7,18 +7,19 @@ import java.sql.SQLException;
 import java.sql.Types;
 
 import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.usertype.UserType;
 
 public class EnumUserType<E extends Enum<E>> implements UserType {
 
   private static final int[] SQL_TYPES = {Types.VARCHAR};
-  
+
   private Class<E> clazz = null;
-  
+
   protected EnumUserType(Class<E> c) {
     this.clazz = c;
   }
-  
+
   @Override
   public int[] sqlTypes() {
     return SQL_TYPES;
@@ -40,26 +41,6 @@ public class EnumUserType<E extends Enum<E>> implements UserType {
   @Override
   public int hashCode(Object x) throws HibernateException {
     return x.hashCode();
-  }
-
-  @Override
-  public Object nullSafeGet(ResultSet rs, String[] names, Object owner)
-      throws HibernateException, SQLException {
-    String name = rs.getString(names[0]);
-    E result = null;
-    if (!rs.wasNull())
-      result = Enum.valueOf(clazz, name);
-    return result;
-  }
-
-  @SuppressWarnings("rawtypes")
-  @Override
-  public void nullSafeSet(PreparedStatement stmt, Object value, int index)
-      throws HibernateException, SQLException {
-    if (value == null)
-      stmt.setNull(index, Types.VARCHAR);
-    else
-      stmt.setString(index, ((Enum)value).name());
   }
 
   @Override
@@ -89,4 +70,25 @@ public class EnumUserType<E extends Enum<E>> implements UserType {
     return original;
   }
 
+  @Override
+  public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner)
+      throws HibernateException, SQLException {
+    String name = rs.getString(names[0]);
+    E result = null;
+    if (!rs.wasNull()) {
+      result = Enum.valueOf(clazz, name);
+    }
+    return result;
+  }
+
+  @SuppressWarnings("rawtypes")
+  @Override
+  public void nullSafeSet(PreparedStatement stmt, Object value, int index, SessionImplementor session)
+      throws HibernateException, SQLException {
+    if (value == null) {
+      stmt.setNull(index, Types.VARCHAR);
+    } else {
+      stmt.setString(index, ((Enum)value).name());
+    }
+  }
 }

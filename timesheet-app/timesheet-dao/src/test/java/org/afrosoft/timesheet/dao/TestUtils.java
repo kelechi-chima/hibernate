@@ -22,18 +22,18 @@ public final class TestUtils {
   /**
    * @return a Client object populated with test values.
    */
-  public static Client client() {
+  public static Client newClient() {
     Client client = new Client();
     client.setName("Another fictional client");
-    client.setContact(contact());
-    client.setAddress(address());
+    client.setContact(newContact());
+    client.setAddress(newAddress());
     return client;
   }
 
   /**
    * @return a Contact object populated with test values.
    */
-  public static Contact contact() {
+  public static Contact newContact() {
     Contact contact = new Contact();
     contact.setFirstName("Jane");
     contact.setLastName("Doe");
@@ -45,7 +45,7 @@ public final class TestUtils {
   /**
    * @return an Address object populated with test values.
    */
-  public static Address address() {
+  public static Address newAddress() {
     Address address = new Address();
     address.setLine1("Another Fictional Client House");
     address.setLine2("Another Fictional Client Road");
@@ -58,7 +58,7 @@ public final class TestUtils {
   /**
    * @return an Employee object populated with test values.
    */
-  public static Employee employee() {
+  public static Employee newEmployee() {
     Employee employee = new Employee();
     employee.setEmployeeNo("AX497822E");
     employee.setFirstName("Jane");
@@ -66,14 +66,14 @@ public final class TestUtils {
     employee.setDateOfBirth(new DateMidnight(1975, 5, 15).toDate());
     employee.setRole(Role.ANALYST);
     employee.setRate(new BigDecimal(30.75));
-    employee.setAddress(address());
+    employee.setAddress(newAddress());
     return employee;
   }
   
   /**
    * @return a Project object populated with test values.
    */
-  public static Project project() {
+  public static Project newProject() {
     DateTime currentDate = new DateTime();
     Project project = new Project();
     project.setName("project name");
@@ -85,7 +85,7 @@ public final class TestUtils {
   /**
    * @return a Timesheet object populated with test values.
    */
-  public static Timesheet timesheet() {
+  public static Timesheet newTimesheet() {
     Timesheet timesheet = new Timesheet();
     timesheet.setEntryDate(new Date());
     return timesheet;

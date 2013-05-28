@@ -8,6 +8,7 @@
     <id name="id" column="EMPLOYEE_ID">
       <generator class="sequence"/>
     </id>
+    <timestamp name="lastUpdatedTime" column="LAST_UPDATED"/>
     <property name="employeeNo" column="EMPLOYEE_NO" unique="true"/>
     <property name="firstName" column="FIRST_NAME"/>
     <property name="lastName" column="LAST_NAME"/>
